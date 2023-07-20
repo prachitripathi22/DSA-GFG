@@ -12,19 +12,17 @@ class Solution
     char nonrepeatingCharacter(string S)
     {
        //Your code here
-       int arr[26] ={0};
+       map<char,int> m;
        queue<char> q;
-       q.push(S[0]);
        int n=S.size();
-       arr[S[0]-'a']++;
-       for(int i=1;i<n;i++)
+       for(int i=0;i<n;i++)
        {
-           arr[S[i]-'a']++;
-           if(arr[S[i]-'a']==1)
+           m[S[i]]++;
+           if(m[S[i]]==1)
            {
                q.push(S[i]);
            }
-           while(!q.empty() && arr[q.front() -'a']!=1)
+           while(!q.empty() && m[q.front()]!=1)
            {
                q.pop();
            }
